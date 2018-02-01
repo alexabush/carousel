@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 document.addEventListener('DOMContentLoaded', function(event) {
   const main = document.querySelector('main');
@@ -51,16 +51,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
     function getPokemonPic(img, p, numPokem, index) {
       $.get(`https://pokeapi.co/api/v2/pokemon/${pokemonCounter}`).then(function(response) {
-          console.log(`pokemon ${numPokem} recieved`);
-          img.src = response.sprites.front_default;
-          p.innerText = `${state.elements[index]}: ${response.name[0].toUpperCase()}${response.name.slice(1)}`;
-        })
-        .catch(function(response) { console.log(`failed to get pokemon ${numPokem}`) });
+        console.log(`pokemon ${numPokem} recieved`);
+        img.src = response.sprites.front_default;
+        p.innerText = `${state.elements[index]}: ${response.name[0].toUpperCase()}${response.name.slice(1)}`;
+      })
+        .catch(function(response) { console.log(`failed to get pokemon ${numPokem}`); });
       pokemonCounter++;
     }
 
   }
 });
+
 /*
 helper functions
 */
