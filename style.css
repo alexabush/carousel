@@ -1,6 +1,6 @@
 body {
-  background: #3399cc;
-  padding: 40px;
+  background-color: #3399cc;
+
 }
 
 img {
@@ -23,29 +23,26 @@ p {
   font-size: 16px;
 }
 
-a {
-  /*transition: all 150ms ease;*/
+#wrapper {
+  background-color: white;
+  max-width: 650px;
+  margin: auto;
+  margin-top: 50px;
 }
 
 header {
-  background-color: white;
-  /*background-color: tan;*/
   padding: 20px 0 15px 20px;
   text-align: center;
 }
 
 main {
+  margin: auto;
   padding: 20px 20px 0 20px;
   display: flex;
 }
 
-section,
-footer {
-  border: 1px solid black;
-  /*border: 1px solid red;*/
-}
-
 main section {
+  border: 1px solid black;
   height: 150px;
   width: 100px;
 }
