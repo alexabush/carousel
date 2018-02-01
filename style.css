@@ -1,0 +1,70 @@
+body {
+  background: #3399cc;
+  padding: 40px;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+p {
+  font-size: 16px;
+}
+
+a {
+  /*transition: all 150ms ease;*/
+}
+
+header {
+  background-color: tan;
+  padding: 20px 0 15px 20px;
+  text-align: center;
+}
+
+main {
+  padding: 20px 20px 0 20px;
+  display: flex;
+}
+
+section, footer {
+  border: 1px solid red;
+}
+
+section {
+    padding: 20px /*20px 20px 20px*/;
+}
+
+main, footer {
+    background-color: yellow;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  /*padding: 5px;*/
+  height: 50px;
+}
+
+footer section {
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+}
+
+footer p {
+  display: inline;
+}
+
+
