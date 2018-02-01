@@ -1,43 +1,48 @@
 const main = document.querySelector('main');
 const leftBtn = document.querySelector('#left');
 const rightBtn = document.querySelector('#right');
-
 const state = {
-  numEleDisplayed: 4,
-  firstElement: 0
+  numElementsDisplay: 4,
+  firstElement: 0,
+  elements: [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+  ]
 };
 
 leftBtn.addEventListener('click', function(e) {
-  if (state.firstElement >= 4) state.firstElement -= state.numEleDisplayed;
-  populate(state.firstElement, state.firstElement + state.numEleDisplayed);
+  if (state.firstElement >= state.numElementsDisplay) state.firstElement -= state.numElementsDisplay;
+  populate(state.firstElement, state.firstElement + state.numElementsDisplay);
 });
 
 rightBtn.addEventListener('click', function(e) {
-  if (state.firstElement < 8) state.firstElement += state.numEleDisplayed;
-  populate(state.numEleDisplayed, 8);
+  state.firstElement += state.numElementsDisplay;
+  state.firstElement = processOverflow(state.firstElement);
+  populate(state.firstElement, state.firstElement + state.numElementsDisplay);
 });
 
-const elements = [
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8
-];
+function processOverflow(num) {
+  if (num >= state.elements.length) num = num % state.elements.length;
+  return num;
+}
 
 populate(0, 4);
 
 function populate(start, end) {
   emptyNode(main);
   for (let i = start; i < end; i++) {
-    state.firstElement = start;
     const section = document.createElement('section');
     const p = document.createElement('p');
-    p.innerText = elements[i];
-    // section.innerText = elements[i];
+    const img = document.createElement('img');
+    img.src = '/Users/macbook/Desktop/trees.jpg';
+    p.innerText = state.elements[i];
+    section.append(img);
     section.append(p);
     main.append(section);
   }
