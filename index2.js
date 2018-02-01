@@ -1,4 +1,14 @@
 const main = document.querySelector('main');
+const leftBtn = document.querySelector('#left');
+const rightBtn = document.querySelector('#right');
+
+leftBtn.addEventListener('click', function(e) {
+  if (e.target.id === 'left') console.log('left');
+});
+
+rightBtn.addEventListener('click', function(e) {
+  if (e.target.id === 'right') console.log('right');
+});
 
 const elements = [
   1,
