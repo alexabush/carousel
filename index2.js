@@ -3,11 +3,11 @@ const leftBtn = document.querySelector('#left');
 const rightBtn = document.querySelector('#right');
 
 leftBtn.addEventListener('click', function(e) {
-  if (e.target.id === 'left') console.log('left');
+  populate(0, 4);
 });
 
 rightBtn.addEventListener('click', function(e) {
-  if (e.target.id === 'right') console.log('right');
+  populate(4, 8);
 });
 
 const elements = [
@@ -21,17 +21,29 @@ const elements = [
   8
 ];
 
-for (let i = 0; i < 4; i++) {
-  const section = document.createElement('section');
-  const p = document.createElement('p');
-  p.innerText = elements[i];
-  // section.innerText = elements[i];
-  section.append(p);
-  main.append(section);
+populate(0, 4);
+
+function populate(start, end) {
+  emptyNode(main);
+  for (let i = start; i < end; i++) {
+    const section = document.createElement('section');
+    const p = document.createElement('p');
+    p.innerText = elements[i];
+    // section.innerText = elements[i];
+    section.append(p);
+    main.append(section);
+  }
 }
-    
-    // <section>
-    //   <img src="" alt="">
-    //   <h3>box4</h3>
-    //   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem esse voluptate alias, id nemo facilis nemo.</p>
-    //   <button>btn4</button>
+
+//rithm ppl said there's an empty() function?
+function emptyNode(node) {
+  while (node.firstChild) {
+    node.removeChild(node.firstChild);
+  }
+}
+
+// <section>
+//   <img src="" alt="">
+//   <h3>box4</h3>
+//   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem esse voluptate alias, id nemo facilis nemo.</p>
+//   <button>btn4</button>
