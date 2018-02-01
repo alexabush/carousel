@@ -36,17 +36,39 @@ populate(0, 4);
 
 function populate(start, end) {
   emptyNode(main);
+  let pokemonCounter = start+1;
   for (let i = start; i < end; i++) {
     const section = document.createElement('section');
     const p = document.createElement('p');
     const img = document.createElement('img');
-    img.src = '/Users/macbook/Desktop/trees.jpg';
-    p.innerText = state.elements[i];
+    // img.src = '/Users/macbook/Desktop/trees.jpg';
+    $.get(`https://pokeapi.co/api/v2/pokemon/${pokemonCounter}`).then(function(response) {
+        console.log('response recieved');
+        var imgUrl = response.sprites.front_default;
+        img.src = imgUrl;
+        p.innerText = state.elements[i];
+      })
+      .catch(function(response) { console.log('no') });
+    pokemonCounter++
+    // p.innerText = state.elements[i];
+    p.innerText = 'Loading Pokemans';
     section.append(img);
     section.append(p);
     main.append(section);
   }
 }
+
+// function getPokemonPic(num) {
+//   debugger;
+//     $.get(`https://pokeapi.co/api/v2/pokemon/${num}`).then(function(response) {
+//         console.log('response recieved');
+//         var imgUrl = response.sprites.front_default;
+//         return imgUrl;
+//       })
+//       .catch(function(response) {console.log('no')});
+//     // }
+//   }
+
 
 //rithm ppl said there's an empty() function?
 function emptyNode(node) {
@@ -54,9 +76,3 @@ function emptyNode(node) {
     node.removeChild(node.firstChild);
   }
 }
-
-// <section>
-//   <img src="" alt="">
-//   <h3>box4</h3>
-//   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem esse voluptate alias, id nemo facilis nemo.</p>
-//   <button>btn4</button>
