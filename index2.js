@@ -4,17 +4,15 @@ const rightBtn = document.querySelector('#right');
 const state = {
   numElementsDisplay: 4,
   firstElement: 0,
-  elements: [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-  ]
+  elements: [],
+  selectNumElements: function(num) {
+    for (let i = 1; i <= num; i++) {
+      this.elements.push(i);
+    }
+  }
 };
+
+state.selectNumElements(8);
 
 leftBtn.addEventListener('click', function(e) {
   if (state.firstElement >= state.numElementsDisplay) state.firstElement -= state.numElementsDisplay;
@@ -36,7 +34,7 @@ populate(0, 4);
 
 function populate(start, end) {
   emptyNode(main);
-  let pokemonCounter = start+1;
+  let pokemonCounter = start + 1;
   for (let i = start; i < end; i++) {
     const section = document.createElement('section');
     const p = document.createElement('p');
@@ -46,12 +44,12 @@ function populate(start, end) {
         console.log('response recieved');
         var imgUrl = response.sprites.front_default;
         img.src = imgUrl;
-        p.innerText = state.elements[i];
+        p.innerText = `${state.elements[i]}: ${response.name[0].toUpperCase()}${response.name.slice(1)}`;
       })
       .catch(function(response) { console.log('no') });
-    pokemonCounter++
+    pokemonCounter++;
     // p.innerText = state.elements[i];
-    p.innerText = 'Loading Pokemans';
+    p.innerText = 'Loading Pokemans...';
     section.append(img);
     section.append(p);
     main.append(section);
