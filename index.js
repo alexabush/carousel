@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   const rightBtn = document.querySelector('#right');
   const state = {
     numElementsDisplay: 4,
-    firstElement: 0,
+    current: 0,
     elements: [],
     selectNumElements: function(num) {
       for (let i = 1; i <= num; i++) {
@@ -16,23 +16,25 @@ document.addEventListener('DOMContentLoaded', function(event) {
   };
 
   (function start() {
-    state.selectNumElements(8);
+    state.selectNumElements(20);
     populate(0, state.numElementsDisplay);
   })();
 
   leftBtn.addEventListener('click', function(e) {
-    let current = state.firstElement;
+    let current = state.current;
     let numDisplay = state.numElementsDisplay;
     if (current >= numDisplay) current -= numDisplay;
     populate(current, current + numDisplay);
   });
 
   rightBtn.addEventListener('click', function(e) {
-    let current = state.firstElement;
+    // debugger;
+    let current = state.current;
     let numDisplay = state.numElementsDisplay;
     current += numDisplay;
     current = processOverflow(current, state.elements.length);
     populate(current, current + numDisplay);
+    state.current = current;
   });
 
   function populate(start, end) {
@@ -41,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     for (let i = start; i < end; i++) {
       const section = document.createElement('section');
       const p = document.createElement('p');
-      p.innerText = 'Loading Pokemans...';
+      p.innerText = `Loading Pokeman ${i+1}...`;
       const img = document.createElement('img');
       getPokemonPic(img, p, pokemonCounter, i);
       section.append(img);
